@@ -30,7 +30,7 @@ Commit all local changes, then (replace # with the current activity number):
 $ git push origin a#
 ```
 
-## Switching to the next activity
+## Switching to the next activityls
 
 The activities have not all been pushed at the start of the lab because each activity builds on the next and sometimes has working versions of the problems from the previous activities.
 
