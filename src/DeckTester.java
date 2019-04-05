@@ -58,6 +58,8 @@ public class DeckTester {
 		Deck d2 = new Deck(ranks2, suits2, pointValues2);
 
 		System.out.println("**** Shuffle the Deck ****");
-		System.out.println();
+		System.out.println("Unshufffled: " + d2);
+		d2.shuffle();
+		System.out.println("Shufffled: " + d2);
 	}
 }

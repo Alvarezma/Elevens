@@ -67,8 +67,8 @@ public class Deck {
 		for (int i = cards.size() - 1; i > 0; i--)	{
 			r = (int)(Math.random() * (i + 1));
 			temp = cards.get(i);
-			cards.set(i, cards.get(r))
-			cards.set(r, temp)
+			cards.set(i, cards.get(r));
+			cards.set(r, temp);
 		}
 		size = cards.size();
 	}
