@@ -2,12 +2,19 @@ Questions
 
 1. Deck, Hand, Discard
 2. 
-checkAnohterPlayPossible
-cardselect
-checkIsLegal, if not go back to card select
-cardwithdrawl
-checkWin, if true restart game.
-cardDeal
+Deal enough cards to fill the board(in this case 9).
+
+Check through the cards on the board to see if a play is possible, continue if true, if there are no plays the game restarts.
+
+Player selects the cards they wish to remove.
+
+Make sure the cards that the player selected can be removed legally(add up to 11 or a JQK match). If this is not legal go back to card select.
+
+Remove the selected cards of the board and into some sort of discard pile.
+
+See if there are any cards left in the deck if not you've won so restart the game.
+
+
 3. No some of it has yet to be implemented.
 4. 
     a. In the constructor and in the method newGame.
