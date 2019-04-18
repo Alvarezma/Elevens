@@ -11,6 +11,9 @@ public class ThirteensBoard extends Board {
 	 */
 	private static final int BOARD_SIZE = 10;
 
+
+	private static final int PAIR_SUM = 13;
+
 	/**
 	 * The ranks of the cards for this game to be sent to the deck.
 	 */
@@ -27,7 +30,7 @@ public class ThirteensBoard extends Board {
 	 * The values of the cards for this game to be sent to the deck.
 	 */
 	private static final int[] POINT_VALUES =
-		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 0};
 
 
 	private static final boolean I_AM_DEBUGGING = false;
@@ -41,7 +44,7 @@ public class ThirteensBoard extends Board {
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
 		if (selectedCards.size() == 2) {
-			return containsPairSum13(selectedCards);
+			return containsPairSum(selectedCards);
 		} else if (selectedCards.size() == 1) {
 			return containsKing(selectedCards);
 		} else {
@@ -52,15 +55,15 @@ public class ThirteensBoard extends Board {
 	@Override
 	public boolean anotherPlayIsPossible() {
 		List<Integer> cIndexes = cardIndexes();
-		return containsPairSum13(cIndexes) || containsKing(cIndexes);
+		return containsPairSum(cIndexes) || containsKing(cIndexes);
 	}
 
-	private boolean containsPairSum13(List<Integer> selectedCards) {
+	private boolean containsPairSum(List<Integer> selectedCards) {
 		for (int sk1 = 0; sk1 < selectedCards.size(); sk1++) {
 			int k1 = selectedCards.get(sk1).intValue();
 			for (int sk2 = sk1 + 1; sk2 < selectedCards.size(); sk2++) {
 				int k2 = selectedCards.get(sk2).intValue();
-				if (cardAt(k1).pointValue() + cardAt(k2).pointValue() == 13) {
+				if (cardAt(k1).pointValue() + cardAt(k2).pointValue() == PAIR_SUM) {
 					return true;
 				}
 			}
