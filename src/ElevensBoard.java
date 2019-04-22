@@ -47,7 +47,6 @@ public class ElevensBoard extends Board {
 	 */
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
-		/* *** TO BE MODIFIED IN ACTIVITY 11 *** */
 		if (selectedCards.size() == 2) {
 			return findPairSum11(selectedCards).size() > 0;
 		} else if (selectedCards.size() == 3) {
@@ -67,7 +66,6 @@ public class ElevensBoard extends Board {
 	 */
 	@Override
 	public boolean anotherPlayIsPossible() {
-		/* *** TO BE MODIFIED IN ACTIVITY 11 *** */
 		List<Integer> cIndexes = cardIndexes();
 		return findPairSum11(cIndexes).size() > 0 || findJQK(cIndexes).size() > 0;
 	}
@@ -134,8 +132,14 @@ public class ElevensBoard extends Board {
 	 * @return true if a legal play was found (and made); false othewise.
 	 */
 	public boolean playIfPossible() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 11 *** */
-		return false; // REPLACE !
+		if (!anotherPlayIsPossible())	{
+			return false;
+		}
+		if (playPairSum11IfPossible())	{
+			return true;
+		} else {
+			return playJQKIfPossible();
+		}
 	}
 
 	/**
@@ -145,8 +149,12 @@ public class ElevensBoard extends Board {
 	 * @return true if an 11-pair play was found (and made); false othewise.
 	 */
 	private boolean playPairSum11IfPossible() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 11 *** */
-		 return false; // REPLACE !
+		List<Integer> locOfPair = findPairSum11(cardIndexes());
+		if (isLegal(locOfPair))	{
+			replaceSelectedCards(locOfPair);
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -156,7 +164,11 @@ public class ElevensBoard extends Board {
 	 * @return true if a JQK play was found (and made); false othewise.
 	 */
 	private boolean playJQKIfPossible() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 11 *** */
-		return false; // REPLACE !
+		List<Integer> locOfJQK = findJQK(cardIndexes());
+		if (isLegal(locOfJQK))	{
+			replaceSelectedCards(locOfJQK);
+			return true;
+		}
+		return false;
 	}
 }
